@@ -48,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C9F8BC13E6549300739017 /* Cocoa.framework in Frameworks */,
+				685700C3D04AE0ADC73826EB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +61,7 @@
 				12C9F8C113E6549300739017 /* PingMenu */,
 				12C9F8BA13E6549300739017 /* Frameworks */,
 				12C9F8B813E6549300739017 /* Products */,
+				7F72C0774457C9D1E5D7DDDD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +78,7 @@
 			children = (
 				12C9F8BB13E6549300739017 /* Cocoa.framework */,
 				12C9F8BD13E6549300739017 /* Other Frameworks */,
+				C69E7C8988D212BEA6710D4F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +123,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7F72C0774457C9D1E5D7DDDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93DDFCDA7302DF5193B09284 /* Pods.debug.xcconfig */,
+				7DB93876437E68099DBBEECF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12C9F8D513E6549300739017 /* Build configuration list for PBXNativeTarget "PingMenu" */;
 			buildPhases = (
+				93A9E87E6A7BE6622E7CE3C8 /* Check Pods Manifest.lock */,
 				12C9F8B313E6549300739017 /* Sources */,
 				12C9F8B413E6549300739017 /* Frameworks */,
 				12C9F8B513E6549300739017 /* Resources */,
+				6C085E1ADA434F2348BBBAA0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,6 +191,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6C085E1ADA434F2348BBBAA0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93A9E87E6A7BE6622E7CE3C8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12C9F8B313E6549300739017 /* Sources */ = {
@@ -268,6 +315,7 @@
 		};
 		12C9F8D613E6549300739017 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93DDFCDA7302DF5193B09284 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PingMenu/PingMenu-Prefix.pch";
@@ -279,6 +327,7 @@
 		};
 		12C9F8D713E6549300739017 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DB93876437E68099DBBEECF /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PingMenu/PingMenu-Prefix.pch";
