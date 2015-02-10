@@ -9,10 +9,15 @@
 #import "PingMenuAppDelegate.h"
 #import "PingEvent.h"
 
+#import "APCStatistics.h"
+#import "APCMonthStatistics.h"
+#import "APCTrafficStatistics.h"
+
 #include <sys/socket.h>
 #include <netdb.h>
 
 #define DEFAULTS_HOSTNAME @"hostName"
+#define DEFAULTS_MONTHLY_DATA @"monthlyData"
 
 #define COLOR_SLOW [NSColor colorWithCalibratedRed:0.755 green:0.345 blue:0.000 alpha:1.000]
 #define COLOR_BAD [NSColor redColor]
@@ -37,7 +42,12 @@
 @synthesize menuRow7;
 @synthesize menuRow8;
 @synthesize menuRow9;
+@synthesize rateMenuRow;
+@synthesize monthlyDataMenuRow;
+@synthesize monthlyDataSpecificationMenuRow;
 @synthesize pingHost=_pingHost;
+@synthesize monthlyData=_monthlyData;
+@synthesize statistics;
 
 -(IBAction)quitMe:(id)sender {
     exit(0);
@@ -74,6 +84,8 @@
     self.menuRow7.title = formatted;
     self.menuRow8.title = formatted;
     self.menuRow9.title = formatted;
+    self.rateMenuRow.title = @"Rate";
+    self.monthlyDataMenuRow.title = @"Monthly Data";
 }
 
 -(void)setupPinger {
@@ -85,6 +97,20 @@
     pinger.delegate = self;
     [pinger start];
     
+}
+
+- (void)setupStatistics {
+    self.statistics = [[APCStatistics alloc] init];
+
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                [self methodSignatureForSelector:@selector(sendPing)]];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(fetchStatistics)];
+    [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
+}
+
+- (void)fetchStatistics {
+    [self.statistics fetchStatistics];
 }
 
 - (NSString *) pingHost {
@@ -107,6 +133,21 @@
     }
 }
 
+- (NSInteger)monthlyData {
+    if (_monthlyData == 0) {
+        _monthlyData = [[NSUserDefaults standardUserDefaults] integerForKey:DEFAULTS_MONTHLY_DATA];
+    }
+    return _monthlyData;
+}
+
+- (void)setMonthlyData:(NSInteger)monthlyData {
+    if (monthlyData != _monthlyData) {
+        _monthlyData = monthlyData;
+        [[NSUserDefaults standardUserDefaults] setInteger:monthlyData forKey:DEFAULTS_MONTHLY_DATA];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
 -(IBAction)openPreferences:(id)sender {
     [self.prefWindowController showWindow:self];
 }
@@ -124,6 +165,7 @@
     [theItem setMenu:theMenu];
 
     [self setupPinger];
+    [self setupStatistics];
 }
 
 - (void)darkModeChanged:(id)notification {
@@ -270,6 +312,22 @@
         titleText = [NSString stringWithFormat:@"%1.3fs",[lastSuccessfulEvent timeSinceSent]];
     }
     
+    if (self.statistics.monthStatistics) {
+        unsigned long long totalUsage = self.statistics.monthStatistics.currentMonthUpload + self.statistics.monthStatistics.currentMonthDownload;
+        NSString *usageString = [NSByteCountFormatter stringFromByteCount:totalUsage countStyle:NSByteCountFormatterUseGB];
+        titleText = [titleText stringByAppendingFormat:@"  |  %@", usageString];
+        self.monthlyDataMenuRow.title = [NSString stringWithFormat:@"%@ / %ld GB", usageString, (long)self.monthlyData];
+
+        NSString *uploadString = [NSByteCountFormatter stringFromByteCount:self.statistics.monthStatistics.currentMonthUpload countStyle:NSByteCountFormatterUseDefault];
+        NSString *downloadString = [NSByteCountFormatter stringFromByteCount:self.statistics.monthStatistics.currentMonthDownload countStyle:NSByteCountFormatterUseDefault];
+        self.monthlyDataSpecificationMenuRow.title = [NSString stringWithFormat:@"⬇︎ %@  ⬆︎ %@", downloadString, uploadString];
+    }
+
+    if (self.statistics.trafficStatistics) {
+        NSString *uploadString = [NSByteCountFormatter stringFromByteCount:self.statistics.trafficStatistics.currentUploadRate countStyle:NSByteCountFormatterUseDefault];
+        NSString *downloadString = [NSByteCountFormatter stringFromByteCount:self.statistics.trafficStatistics.currentDownloadRate countStyle:NSByteCountFormatterUseDefault];
+        self.rateMenuRow.title = [NSString stringWithFormat:@"⬇︎ %@/s  ⬆︎ %@/s", downloadString, uploadString];
+    }
     
     NSAttributedString* title = [[[NSAttributedString alloc] initWithString:titleText attributes:[NSDictionary dictionaryWithObject:titleColor forKey:NSForegroundColorAttributeName]] autorelease];
     [theItem setAttributedTitle:title];

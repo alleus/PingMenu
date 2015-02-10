@@ -17,6 +17,12 @@
 		12C9F8CF13E6549300739017 /* PingMenuAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C9F8CE13E6549300739017 /* PingMenuAppDelegate.m */; };
 		12C9F8D213E6549300739017 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12C9F8D013E6549300739017 /* MainMenu.xib */; };
 		12C9F8DE13E6586600739017 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C9F8DD13E6586600739017 /* SimplePing.m */; };
+		2AB155251A88E3C100DA1F0F /* MTLXMLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB155221A88E3C100DA1F0F /* MTLXMLAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		2AB155261A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB155241A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		2AD4A9FD1A890611004AB10B /* APCTrafficStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4A9FA1A890611004AB10B /* APCTrafficStatistics.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		2AD4A9FE1A890611004AB10B /* APCMonthStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4A9FC1A890611004AB10B /* APCMonthStatistics.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		2AD4AA011A89080A004AB10B /* APCStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4AA001A89080A004AB10B /* APCStatistics.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		685700C3D04AE0ADC73826EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C69E7C8988D212BEA6710D4F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,19 @@
 		12C9F8D113E6549300739017 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		12C9F8DC13E6586600739017 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		12C9F8DD13E6586600739017 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		2AB155211A88E3C100DA1F0F /* MTLXMLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLXMLAdapter.h; sourceTree = "<group>"; };
+		2AB155221A88E3C100DA1F0F /* MTLXMLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLXMLAdapter.m; sourceTree = "<group>"; };
+		2AB155231A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLXMLTransformerAdditions.h"; sourceTree = "<group>"; };
+		2AB155241A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLXMLTransformerAdditions.m"; sourceTree = "<group>"; };
+		2AD4A9F91A890611004AB10B /* APCTrafficStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCTrafficStatistics.h; sourceTree = "<group>"; };
+		2AD4A9FA1A890611004AB10B /* APCTrafficStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCTrafficStatistics.m; sourceTree = "<group>"; };
+		2AD4A9FB1A890611004AB10B /* APCMonthStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCMonthStatistics.h; sourceTree = "<group>"; };
+		2AD4A9FC1A890611004AB10B /* APCMonthStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCMonthStatistics.m; sourceTree = "<group>"; };
+		2AD4A9FF1A89080A004AB10B /* APCStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStatistics.h; sourceTree = "<group>"; };
+		2AD4AA001A89080A004AB10B /* APCStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStatistics.m; sourceTree = "<group>"; };
+		7DB93876437E68099DBBEECF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		93DDFCDA7302DF5193B09284 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C69E7C8988D212BEA6710D4F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +115,8 @@
 		12C9F8C113E6549300739017 /* PingMenu */ = {
 			isa = PBXGroup;
 			children = (
+				2AD4AA021A890812004AB10B /* Statistics */,
+				2AB155271A88E3C600DA1F0F /* Mantle XML additions */,
 				1148067C18809A0100FE8318 /* PreferencesWindowController.h */,
 				1148067D18809A0100FE8318 /* PreferencesWindowController.m */,
 				1148067E18809A0100FE8318 /* PreferencesWindowController.xib */,
@@ -121,6 +142,30 @@
 				12C9F8CA13E6549300739017 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AB155271A88E3C600DA1F0F /* Mantle XML additions */ = {
+			isa = PBXGroup;
+			children = (
+				2AB155211A88E3C100DA1F0F /* MTLXMLAdapter.h */,
+				2AB155221A88E3C100DA1F0F /* MTLXMLAdapter.m */,
+				2AB155231A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.h */,
+				2AB155241A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.m */,
+			);
+			name = "Mantle XML additions";
+			sourceTree = "<group>";
+		};
+		2AD4AA021A890812004AB10B /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				2AD4A9FF1A89080A004AB10B /* APCStatistics.h */,
+				2AD4AA001A89080A004AB10B /* APCStatistics.m */,
+				2AD4A9F91A890611004AB10B /* APCTrafficStatistics.h */,
+				2AD4A9FA1A890611004AB10B /* APCTrafficStatistics.m */,
+				2AD4A9FB1A890611004AB10B /* APCMonthStatistics.h */,
+				2AD4A9FC1A890611004AB10B /* APCMonthStatistics.m */,
+			);
+			name = Statistics;
 			sourceTree = "<group>";
 		};
 		7F72C0774457C9D1E5D7DDDD /* Pods */ = {
@@ -231,10 +276,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C9F8C813E6549300739017 /* main.m in Sources */,
+				2AB155251A88E3C100DA1F0F /* MTLXMLAdapter.m in Sources */,
 				12C9F8CF13E6549300739017 /* PingMenuAppDelegate.m in Sources */,
 				1148067F18809A0100FE8318 /* PreferencesWindowController.m in Sources */,
 				12C9F8DE13E6586600739017 /* SimplePing.m in Sources */,
 				1231FE9A179591A500CC0D12 /* PingEvent.m in Sources */,
+				2AB155261A88E3C100DA1F0F /* NSValueTransformer+MTLXMLTransformerAdditions.m in Sources */,
+				2AD4AA011A89080A004AB10B /* APCStatistics.m in Sources */,
+				2AD4A9FE1A890611004AB10B /* APCMonthStatistics.m in Sources */,
+				2AD4A9FD1A890611004AB10B /* APCTrafficStatistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

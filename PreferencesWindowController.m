@@ -30,6 +30,7 @@
     
     PingMenuAppDelegate *AppDelegate = (PingMenuAppDelegate *)[[NSApplication sharedApplication] delegate];
     self.domain.stringValue = AppDelegate.pingHost;
+    self.monthlyData.integerValue = AppDelegate.monthlyData;
     
     [self.window setDefaultButtonCell:self.saveButton.cell];
 }
@@ -41,6 +42,7 @@
 - (IBAction)saveButtonPressed:(id)sender {
     PingMenuAppDelegate *AppDelegate = (PingMenuAppDelegate *)[[NSApplication sharedApplication] delegate];
     AppDelegate.pingHost = self.domain.stringValue;
+    AppDelegate.monthlyData = self.monthlyData.integerValue;
     [self close];
 }
 

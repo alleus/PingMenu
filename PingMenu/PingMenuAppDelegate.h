@@ -10,6 +10,8 @@
 #import "SimplePing.h"
 #import "PreferencesWindowController.h"
 
+@class APCStatistics;
+
 @interface PingMenuAppDelegate : NSObject <NSApplicationDelegate,SimplePingDelegate> {
     NSWindow *window;
     NSStatusItem* theItem;
@@ -32,7 +34,11 @@
     NSMenuItem* menuRow7;
     NSMenuItem* menuRow8;
     NSMenuItem* menuRow9;
+    NSMenuItem* rateMenuRow;
+    NSMenuItem* monthlyDataMenuRow;
+    NSMenuItem* monthlyDataSpecificationMenuRow;
     BOOL darkModeOn;
+    APCStatistics* statistics;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -54,8 +60,13 @@
 @property (assign) IBOutlet NSMenuItem* menuRow7;
 @property (assign) IBOutlet NSMenuItem* menuRow8;
 @property (assign) IBOutlet NSMenuItem* menuRow9;
+@property (assign) IBOutlet NSMenuItem* rateMenuRow;
+@property (assign) IBOutlet NSMenuItem* monthlyDataMenuRow;
+@property (assign) IBOutlet NSMenuItem* monthlyDataSpecificationMenuRow;
 @property (retain,nonatomic) NSString* pingHost;
+@property (assign,nonatomic) NSInteger monthlyData;
 @property (retain,nonatomic) NSDate* lastSeen;
+@property (retain,nonatomic) APCStatistics* statistics;
 
 
 @property (assign, nonatomic) PreferencesWindowController *prefWindowController;
